@@ -16,9 +16,13 @@ public class URLBuilder {
         for (int i = 0; i < ingredients.size(); i++) {
             builder.append(ingredients.get(i).ingredientsToString());
         }
-        builder.append("&=p=" + pageNr);
+        builder.append("&p=" + pageNr);
 
         System.out.println("Twoje przepisy to:");
         return builder.toString();
+    }
+
+    public String buildUpURL(String requiredURL, int pageNr){
+        return requiredURL.replace("3", String.valueOf(pageNr));
     }
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ScannerContent {
 
     private Scanner scanner = new Scanner(System.in);
+    URLBuilder urlBuilder = new URLBuilder();
 
     public List<Ingredient> loadIngredientsFromUserAndAddToURL() {
 
@@ -19,15 +20,15 @@ public class ScannerContent {
             if (line.equalsIgnoreCase("koniec")) {
                 System.out.println("Czy skończyłeś wpisywać składniki?");
                 line2 = scanner.nextLine();
-                if (line2.equalsIgnoreCase("tak")){
+                if (line2.equalsIgnoreCase("tak")) {
                     break;
                 }
-                if (line2.equalsIgnoreCase("nie")){
+                if (line2.equalsIgnoreCase("nie")) {
                     line = "";
                     continue;
                 }
             }
-            if (!line.equalsIgnoreCase("koniec")){
+            if (!line.equalsIgnoreCase("koniec")) {
                 Ingredient ingredient = new Ingredient(line);
                 ingredients.add(ingredient);
             }
@@ -36,4 +37,10 @@ public class ScannerContent {
 
         return ingredients;
     }
+
+    public String loadAnswersFromUser() {
+        System.out.println("Czy widzisz przepis który Cię interesuje?");
+        return scanner.nextLine();
+    }
+
 }

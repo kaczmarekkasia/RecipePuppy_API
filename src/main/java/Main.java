@@ -18,17 +18,32 @@ public class Main {
         URLBuilder urlBuilder = new URLBuilder();
         RecipeAPI recipeAPI = new RecipeAPI();
         StringBuilder builder = new StringBuilder();
+        int pageNr = 3;
 
 
         System.out.println("Witaj w aplikacji do pobierania przepisów!");
 
         List<Ingredient> ingredients = scanner.loadIngredientsFromUserAndAddToURL();
-        String requestURL = urlBuilder.buildURL(ingredients, 3);
+        String requestURL = urlBuilder.buildURL(ingredients, pageNr);
+
+        System.out.println(requestURL);
 
         RecipesResponse recipesResponse = recipeAPI.loadURLByContent(requestURL);
 
         System.out.println(recipesResponse.printRecipeResponse());
 
+        String answer = scanner.loadAnswersFromUser();
+
+        if (answer.equalsIgnoreCase("tak")){
+        }
+        if (answer.equalsIgnoreCase("nie")){
+            String newRequestURL= urlBuilder.buildUpURL(requestURL, pageNr+1);
+            System.out.println(recipeAPI.loadURLByContent(newRequestURL).printRecipeResponse());
+
+        }
+        else {
+            System.out.println("nie rozumiem");
+        }
 
 
     }
