@@ -18,15 +18,21 @@ public class ScannerContent {
             System.out.println("składnik:");
             line = scanner.nextLine();
             if (line.equalsIgnoreCase("koniec")) {
-                System.out.println("Czy skończyłeś wpisywać składniki?");
-                line2 = scanner.nextLine();
-                if (line2.equalsIgnoreCase("tak")) {
-                    break;
-                }
-                if (line2.equalsIgnoreCase("nie")) {
-                    line = "";
-                    continue;
-                }
+                   System.out.println("Czy skończyłeś wpisywać składniki?");
+                   line2 = scanner.nextLine();
+                   if (line2.equalsIgnoreCase("tak")) {
+                       break;
+                   }
+                   if (line2.equalsIgnoreCase("nie")) {
+                       line = "";
+                       continue;
+                   }
+                   if (!line2.equalsIgnoreCase("tak") || (!line2.equalsIgnoreCase("nie"))){
+                       System.out.println("nie rozumiem...");
+                       line = "";
+                       continue;
+                   }
+
             }
             if (!line.equalsIgnoreCase("koniec")) {
                 Ingredient ingredient = new Ingredient(line);
