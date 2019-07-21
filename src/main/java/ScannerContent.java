@@ -49,4 +49,10 @@ public class ScannerContent {
         return scanner.nextLine();
     }
 
+    public int loadRecipeNrFromUser() {
+        System.out.println("Który przepis Cię interesuje?");
+        String currentNr = scanner.nextLine();
+        return Integer.parseInt(currentNr);
+    }
+
 }
