@@ -16,6 +16,6 @@ public class Result {
 
 
     public String printResult() {
-        return title;
+        return title.replace("\n","" ).replace("\t","").replace("\r","").trim();
     }
 }

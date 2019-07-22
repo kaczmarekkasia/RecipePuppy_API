@@ -1,4 +1,5 @@
 import model.RecipesResponse;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -13,7 +14,6 @@ public class Main {
         ScannerContent scanner = new ScannerContent();
         URLBuilder urlBuilder = new URLBuilder();
         RecipeAPI recipeAPI = new RecipeAPI();
-
         int pageNr = 3;
 
         System.out.println("Witaj w aplikacji do pobierania przepisów!");
@@ -38,11 +38,13 @@ public class Main {
                 break;
             }
             if (answer.equalsIgnoreCase("nie")) {
-                String newRequestURL = urlBuilder.buildUpURL(requestURL, pageNr + 1);
+                pageNr++;
+                String newRequestURL = urlBuilder.buildUpURL(requestURL, pageNr);
+                System.out.println(newRequestURL);
                 System.out.println(recipeAPI.loadURLByContent(newRequestURL).printRecipeResponse());
-                break;
-            }
-            if (!answer.equalsIgnoreCase("tak") || (!answer.equalsIgnoreCase("nie"))) {
+                answer = scanner.loadAnswersFromUser();
+
+            } else if (!answer.equalsIgnoreCase("tak") || (!answer.equalsIgnoreCase("nie"))) {
                 System.err.println("Nie rozumiem..");
                 answer = scanner.loadAnswersFromUser();
                 continue;

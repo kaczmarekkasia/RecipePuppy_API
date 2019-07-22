@@ -4,7 +4,7 @@ import java.util.List;
 public class URLBuilder {
     private final static String BASE_URL = "http://www.recipepuppy.com/api/?i=";
 
-    private final StringBuilder builder;
+    private StringBuilder builder;
 
 
     public URLBuilder() {
@@ -23,6 +23,9 @@ public class URLBuilder {
     }
 
     public String buildUpURL(String requiredURL, int pageNr){
-        return requiredURL.replace("3", String.valueOf(pageNr));
+        String newRequiredURL = requiredURL.substring(0, requiredURL.length()-1);
+        builder = new StringBuilder(newRequiredURL);
+        builder.append(pageNr);
+        return builder.toString();
     }
 }
