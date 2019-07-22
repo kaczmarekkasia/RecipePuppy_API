@@ -15,6 +15,7 @@ public class Main {
         URLBuilder urlBuilder = new URLBuilder();
         RecipeAPI recipeAPI = new RecipeAPI();
         int pageNr = 3;
+        int counter =0;
 
         System.out.println("Witaj w aplikacji do pobierania przepisów!");
 
@@ -41,7 +42,8 @@ public class Main {
                 pageNr++;
                 String newRequestURL = urlBuilder.buildUpURL(requestURL, pageNr);
                 System.out.println(newRequestURL);
-                System.out.println(recipeAPI.loadURLByContent(newRequestURL).printRecipeResponse());
+                recipesResponse = recipeAPI.loadURLByContent(newRequestURL);
+                System.out.println(recipesResponse.printRecipeResponse());
                 answer = scanner.loadAnswersFromUser();
 
             } else if (!answer.equalsIgnoreCase("tak") || (!answer.equalsIgnoreCase("nie"))) {
